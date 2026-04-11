@@ -10,18 +10,6 @@ and persistent homology.
 
 NIR Image → Preprocessing → Skeletonization → Graph G(V,E) → Persistent Homology → Hausdorff Matching → Auth Decision
 
-## Repository Structure
-
-| Folder | Owner | Purpose |
-|--------|-------|---------|
-| src/preprocessing | Samiksha | CLAHE, binarization |
-| src/skeletonization | Harsh | Zhang-Suen thinning |
-| src/graph_builder | Harsh | Node detection, graph G(V,E) |
-| src/tda | Tarunima | Persistent homology |
-| src/matching | Tarunima | Hausdorff distance matching |
-| notebooks/ | All | Exploration notebooks |
-| Dataset/ | Local only | See Dataset/README.md |
-
 ## Setup
 
 ```bash
