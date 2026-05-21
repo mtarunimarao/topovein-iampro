@@ -51,6 +51,7 @@ BLUR_SIGMA         = 0        # 0 = auto-computed from kernel size
 
 # Skip already-processed files (set False to reprocess everything)
 SKIP_EXISTING      = True
+WINDOWS_INVALID_PATH_CHARS = '<>:"/\\|?*'
 
 
 # ─────────────────────────────────────────
@@ -125,13 +126,22 @@ def preprocess_one(img_path):
     return denoised, "OK"
 
 
+def sanitize_path_token(value):
+    text = str(value).strip() or "unknown"
+    for char in WINDOWS_INVALID_PATH_CHARS:
+        text = text.replace(char, "_")
+    return text
+
+
 def get_output_path(record, output_root):
     """
     Mirror the original folder structure under output_root.
     e.g.  1st_session/001_1/01.jpg  →  preprocessed/1st_session/001_1/01_clahe.png
     """
-    session  = record["session"]
-    folder   = f"{record['subject_id']}_{record['finger_id']}"
+    session  = sanitize_path_token(record["session"])
+    subject_id = sanitize_path_token(record["subject_id"])
+    finger_id = sanitize_path_token(record["finger_id"])
+    folder   = f"{subject_id}_{finger_id}"
     stem     = Path(record["image_name"]).stem          # "01"
     out_dir  = Path(output_root) / session / folder
     out_dir.mkdir(parents=True, exist_ok=True)
