@@ -16,9 +16,28 @@ NIR Image → Preprocessing → Skeletonization → Graph G(V,E) → Persistent 
 pip install -r requirements.txt
 ```
 
+Windows users can safely use:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+If you only want Tarunima's persistent-homology scripts, install the lighter
+dependency set instead:
+
+```bash
+python -m pip install -r requirements-tarunima.txt
+```
+
 ## Dataset
-FV-USM (123 subjects, 2 sessions, 4 fingers, 6 images each)
-Not included — see Dataset/README.md
+This repo can work with:
+
+- the official FV-USM dataset placed in `Dataset/Published_database_FV-USM_Dec2013`
+- the UTFVP dataset placed in `Dataset/Published_database_UTFVP`
+
+This repository does not ship biometric image data. Add one of the supported
+datasets locally before running the preprocessing, skeletonization, graph
+extraction, and Tarunima PH pipeline.
 
 ## Branch Structure
 - main — stable, protected, merged only via PR

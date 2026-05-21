@@ -21,3 +21,6 @@ Thumbs.db
 results/**/*.png
 results/**/*.npy
 results/**/*.jpg
+results/**/*.csv
+results/**/*.json
+results/**/*.log
